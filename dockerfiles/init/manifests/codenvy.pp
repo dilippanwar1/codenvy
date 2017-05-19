@@ -364,6 +364,11 @@ $machine_docker_parent_cgroup = getValue("CODENVY_DOCKER_PARENT_CGROUP","NULL")
   $rsync_ssh_log_level=getValue("RSYNC_SSH_LOG_LEVEL","INFO")
 
 ###############################
+# Predefined stacks loading policy
+#
+$codenvy_default_stacks_overwrite=getValue("CODENVY_DEFAULT_STACKS_OVERWRITE","true")
+
+###############################
 # Include base module
   include base
 }
