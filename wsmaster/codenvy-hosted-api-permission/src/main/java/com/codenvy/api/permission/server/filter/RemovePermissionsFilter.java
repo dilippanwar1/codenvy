@@ -61,7 +61,7 @@ public class RemovePermissionsFilter extends CheMethodInvokerFilter {
                                                                                           ServerException {
         if (genericResourceMethod.getMethod().getName().equals("removePermissions")) {
             instanceValidator.validate(domain, instance);
-            if (!domainsPermissionsCheckers.getOnRemove(domain).isPermitted(user, domain, instance)) {
+            if (!domainsPermissionsCheckers.getRemoveChecker(domain).isPermitted(user, domain, instance)) {
                 throw new ForbiddenException("User can't edit permissions for this instance");
             }
         }

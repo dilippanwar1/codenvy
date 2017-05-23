@@ -60,7 +60,7 @@ public class SetPermissionsFilter extends CheMethodInvokerFilter {
             final String domain = permissions.getDomainId();
             checkArgument(!isNullOrEmpty(domain), "Domain required");
             instanceValidator.validate(domain, permissions.getInstanceId());
-            if (!domainsPermissionsChecker.getOnSet(domain).isPermitted(permissions)) {
+            if (!domainsPermissionsChecker.getSetChecker(domain).isPermitted(permissions)) {
                 throw new ForbiddenException("User can't edit permissions for this instance");
             }
         }

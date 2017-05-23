@@ -27,14 +27,14 @@ public class DomainsPermissionsCheckers {
         this.defaultRemovePermissionsChecker = defaultRemovePermissionsChecker;
     }
 
-    public SetPermissionsChecker getOnSet(String domain) {
+    public SetPermissionsChecker getSetChecker(String domain) {
         if (domain2setPermissionsChecker.containsKey(domain)) {
             return domain2setPermissionsChecker.get(domain);
         }
         return defaultPermissionsChecker;
     }
 
-    public RemovePermissionsChecker getOnRemove(String domain) {
+    public RemovePermissionsChecker getRemoveChecker(String domain) {
         if (domain2removePermissionsChecker.containsKey(domain)) {
             return domain2removePermissionsChecker.get(domain);
         }
