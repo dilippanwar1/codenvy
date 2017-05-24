@@ -14,10 +14,10 @@
  */
 package com.codenvy.api.permission.server.filter.check;
 
-import com.google.common.collect.ImmutableMap;
-
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Singleton;
+import java.util.Map;
 
 /**
  * Represents a set of domain-specific permissions checkers.
@@ -27,15 +27,17 @@ import javax.inject.Singleton;
 @Singleton
 public class DomainsPermissionsCheckers {
 
-    private final ImmutableMap<String, SetPermissionsChecker>    domain2setPermissionsChecker;
-    private final DefaultSetPermissionsChecker                   defaultSetPermissionsChecker;
-    private final ImmutableMap<String, RemovePermissionsChecker> domain2removePermissionsChecker;
-    private final DefaultRemovePermissionsChecker                defaultRemovePermissionsChecker;
+    private final Map<String, SetPermissionsChecker>    domain2setPermissionsChecker;
+    private final DefaultSetPermissionsChecker          defaultSetPermissionsChecker;
+    private final Map<String, RemovePermissionsChecker> domain2removePermissionsChecker;
+    private final DefaultRemovePermissionsChecker       defaultRemovePermissionsChecker;
 
     @Inject
-    public DomainsPermissionsCheckers(ImmutableMap<String, SetPermissionsChecker> domain2setPermissionsChecker,
+    public DomainsPermissionsCheckers(@Named("set.permissions.checkers")
+                                      Map<String, SetPermissionsChecker> domain2setPermissionsChecker,
                                       DefaultSetPermissionsChecker defaultPermissionsChecker,
-                                      ImmutableMap<String, RemovePermissionsChecker> domain2removePermissionsChecker,
+                                      @Named("remove.permissions.checkers")
+                                      Map<String, RemovePermissionsChecker> domain2removePermissionsChecker,
                                       DefaultRemovePermissionsChecker defaultRemovePermissionsChecker) {
         this.domain2setPermissionsChecker = domain2setPermissionsChecker;
         this.defaultSetPermissionsChecker = defaultPermissionsChecker;
